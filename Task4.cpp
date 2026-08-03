@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+
 string findResultType(string type1, string type2)
 {
     if(type1 == "bool" || type2 == "bool")
@@ -33,6 +35,20 @@ bool checkAssignment(string variableType, string resultType)
     }
 }
 
+bool isNumber(string s)
+{
+    if(s.empty())
+        return false;
+
+    for(char ch : s)
+    {
+        if(!isdigit(ch))
+            return false;
+    }
+
+    return true;
+}
+
 int main()
 {
     map<string, string> symbolTable;
@@ -59,7 +75,7 @@ int main()
     {
         typeOp1 = symbolTable[operand1];
     }
-    else if(isdigit(operand1[0]))
+    else if(isNumber(operand1))
     {
         typeOp1 = "int";
     }
@@ -73,7 +89,7 @@ int main()
     {
         typeOp2 = symbolTable[operand2];
     }
-    else if(isdigit(operand2[0]))
+    else if(isNumber(operand2))
     {
         typeOp2 = "int";
     }
